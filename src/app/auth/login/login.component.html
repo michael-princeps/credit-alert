@@ -1,0 +1,53 @@
+<div class="loginform animate__animated animate__slideInLeft animate__faster">
+  <div class="loginform_header">
+    <h4 class="loginform_header-title">
+      hi, welcome back
+    </h4>
+    <span class="loginform_header-titlesmall">
+      Don't have an account? <a [routerLink]="['/auth/register']">Sign Up</a>
+    </span>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm.value)">
+    <div class="p-fluid">
+      <div class="p-field">
+        <input type="email" formControlName="email" class="p-inputtext-lg" pInputText placeholder="Email">
+        <ng-container *ngIf="(formControls.email.dirty || formControls.email.touched) && formControls.email.errors">
+          <span *ngIf="formControls.email.errors.required" id="email-help" class="p-invalid p-my-2 p-d-block">Email is
+            required</span>
+          <span *ngIf="formControls.email.errors.email" id="email-help" class="p-invalid p-my-2 p-d-block">Please enter valid email only</span>
+        </ng-container>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-11">
+          <input [type]="hide ? 'password' : 'text'" formControlName="password" aria-describedby="password-help" class="p-inputtext-lg"
+            pInputText placeholder="Password">
+        </div>
+        <div class="p-field p-col-1">
+          <button [icon]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'" class="p-button-lg button--noborder button p-button-text h-100" pButton pRipple type="button" (click)="hide =! hide"></button>
+        </div>
+        <ng-container
+        *ngIf="(formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
+        <span id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
+      </ng-container>
+      </div>
+     
+     
+      <div class="p-field">
+        <div class="p-text-right forgot-pwd">
+          <a [routerLink]="['/auth/reset-password']" routerLinkActive="router-link-active">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+    <!-- <button [disabled]="loginForm.invalid || loading" pButton type="submit" [label]="loading ? 'Logging In...' : 'Log In'" [icon]="isAuthenticated ? 'pi pi-check' : 'pi pi-spin'" class="p-button button button--primary button--noborder
+        p-button-lg login-btn" ></button> -->
+        <button class="button button--primary button--wide button--noborder login-btn" type="submit" [disabled]="loginForm.invalid || loading">
+          <ng-container *ngIf="isAuthenticated; else isNotAuthenticated">
+            <i class="pi pi-check" ></i>
+          </ng-container>
+          <ng-template #isNotAuthenticated>
+            <i *ngIf="loading" class="pi pi-spin pi-spinner" ></i>
+            <span *ngIf="!loading">Sign In</span>
+          </ng-template>
+        </button>
+  </form>
+</div>

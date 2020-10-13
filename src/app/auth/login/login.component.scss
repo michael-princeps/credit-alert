@@ -1,0 +1,62 @@
+@import '../../../styles/abstract/variables';
+
+.loginform {
+  
+  &_header {
+    margin-bottom: 3.5rem;
+    text-align: center;
+
+    &-title {
+      font-size: 2rem;
+      margin: 1rem 0;
+      font-weight: bolder;
+      text-transform: capitalize;
+    }
+
+    &-titlesmall {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 1rem 0;
+
+      a{
+        color: $color-primary;
+      }
+    }
+  }
+
+  form {
+    .login-btn {
+      width: 100%;
+      text-align: center;
+
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgb(245 107 42 / .4) !important;
+      }
+
+      i{
+        font-size: 1.25rem;
+      }
+    }
+
+    input {
+      background-color: $color-off-black;
+      border: none;
+      padding: 1rem;
+      border-radius: .5rem;
+
+      // &:focus {
+      //   box-shadow: 0 0 0 0.2rem rgb(245 107 42 / .4) !important;
+      // }
+    }
+
+    .forgot-pwd {
+      margin: 1.5rem 0;
+
+      a {
+        color: $color-primary;
+        text-decoration: unset;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

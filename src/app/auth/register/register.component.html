@@ -1,0 +1,63 @@
+<div class="signupform animate__animated animate__slideInLeft animate__faster">
+  <div class="signupform_header">
+    <h4 class="signupform_header-title">
+      create your account
+    </h4>
+    <span class="signupform_header-titlesmall">
+      Already have an account? <a [routerLink]="['/auth/login']">Sign in</a>
+    </span>
+  </div>
+  <form autocomplete="off" [formGroup]="registerForm">
+    <div class="p-fluid">
+      <div class="p-field">
+        <input type="text" class="p-inputtext-lg" formControlName="name" pInputText placeholder="Full Name">
+        <ng-container *ngIf="(formControls.name.dirty || formControls.name.touched) && formControls.name.errors">
+            <span id="name-help" class="p-invalid p-mt-2 p-d-block">Please enter name</span>
+          </ng-container>
+      </div>
+      <div class="p-field">
+        <input type="email" class="p-inputtext-lg" formControlName="email" pInputText placeholder="Email">
+        <ng-container *ngIf="(formControls.email.dirty || formControls.email.touched) && formControls.email.errors">
+            <span *ngIf="formControls.email.errors.required" id="email-help" class="p-invalid p-my-2 p-d-block">Email is
+              required</span>
+            <span *ngIf="formControls.email.errors.email" id="email-help" class="p-invalid p-my-2 p-d-block">Please enter valid email only</span>
+          </ng-container>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-11">
+          <input [type]="hide ? 'password' : 'text'" formControlName="password" aria-describedby="password-help"
+            class="p-inputtext-lg" pInputText placeholder="Password">
+        </div>
+        <div class="p-field p-col-1">
+          <button [icon]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'"
+            class="p-button-lg button--noborder button p-button-text h-100" pButton pRipple type="button"
+            (click)="hide =! hide"></button>
+        </div>
+        <ng-container
+        *ngIf="(formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
+        <span id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
+      </ng-container>
+      </div>
+      <div class="p-field">
+        <input type="tel" class="p-inputtext-lg" formControlName="phone_no" pInputText placeholder="Phone Number">
+        <ng-container
+          *ngIf="(formControls.phone_no.dirty || formControls.phone_no.touched) && formControls.phone_no.errors">
+          <span id="phone_no-help" class="p-invalid p-mt-2 p-d-block">Please enter Phone Number</span>
+        </ng-container>
+      </div>
+    </div>
+    <!-- <button pButton type="button" label="Register" class="p-button button button--primary button--noborder
+        p-button-lg login-btn" ></button> -->
+    <button class="button button--primary button--wide button--noborder register-btn" type="submit"
+      [disabled]="registerForm.invalid || loading">
+      <ng-container *ngIf="isCreated; else isNotCreated">
+        <i class="pi pi-check"></i>
+      </ng-container>
+      <ng-template #isNotCreated>
+        <i *ngIf="loading" class="pi pi-spin pi-spinner"></i>
+        <span *ngIf="!loading">Sign Up</span>
+      </ng-template>
+    </button>
+
+  </form>
+</div>

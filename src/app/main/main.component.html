@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <section class="main">
+        <p-sidebar [(visible)]="display">
+            <app-sidenav></app-sidenav>
+        </p-sidebar>
+        <aside class="main_side">
+            <app-sidenav></app-sidenav>
+        </aside>
+        <main class="main_body">
+            <div class="p-text-right p-d-md-none">
+                <button pButton (click)="display = true" pRipple type="button" icon="pi pi-bars" class="p-button-plain p-button-outlined p-button-secondary p-button-lg"></button>
+            </div>
+            <router-outlet></router-outlet>
+        </main>
+    </section>
+</div>
