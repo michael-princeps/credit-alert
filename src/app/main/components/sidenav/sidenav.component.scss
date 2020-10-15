@@ -63,4 +63,17 @@
             }
         }
     }
+    &_submenu_links{
+        padding: .5rem 1rem;
+        display: none;
+
+        .sidenav_menu_links--title{
+            height: 3rem;
+            line-height: 3rem;
+        }
+
+        &--show{
+            display: block !important;
+        }
+    }
 }

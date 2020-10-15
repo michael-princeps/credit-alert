@@ -1,0 +1,41 @@
+<section class="wrapper h-100">
+    <div class="profile">
+        <div class="p-grid p-nogutter vh-100 p-ai-center p-jc-center">
+            <div class="p-col-11 p-sm-10 p-md-7 p-lg-6 p-xl-4 p-mx-auto">
+                <div class="profile_header">
+                    <h4 class="profile_header-title">
+                      Profile Update
+                    </h4>
+                    <span class="profile_header-titlesmall">
+                      Please update your profile to proceed
+                    </span>
+                  </div>
+                <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile(updateProfileForm.value)">
+                    <div class="p-fluid">
+                        <div class="p-field">
+                            <input type="tel" formControlName="alt_phone_no" class="p-inputtext-lg" pInputText placeholder="Alt Phone Number">
+                        </div>
+                        <div class="p-field">
+                            <p-calendar styleClass="profile_calendar" formControlName="d_o_b" inputId="basic" placeholder="Date of birth"></p-calendar>
+                        </div>
+                        <div class="p-field">
+                            <input type="text" formControlName="home_address" class="p-inputtext-lg" pInputText placeholder="Home address">
+                        </div>
+                        <div class="p-field">
+                            <!-- <input type="text" class="p-inputtext-lg" pInputText placeholder="State"> -->
+                            <p-dropdown styleClass="state-dropdown" formControlName="state" [filter]="true" [options]="states" placeholder="State" optionLabel="name"></p-dropdown>
+                        </div>
+                        <div class="p-field">
+                            <input type="text" formControlName="city" class="p-inputtext-lg" pInputText placeholder="City">
+                        </div>
+                        <div class="p-field p-mt-5">
+                            <button type="submit" class="button button--wide button--primary button--raised profile_button"> 
+                                update
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,9 +1,11 @@
 <div class="dashboard">
   <div class="p-mb-3 dashboard-user">
-    <h3>Hello, Customer</h3>
+    <ng-container *ngIf="user">
+        <h3>Hello, {{user.first_name}}&nbsp;{{user.last_name}}</h3>
+    </ng-container>
   </div>
   <div class="p-grid">
-    <div class="p-col-12 p-md-6 p-lg-3">
+    <div class="p-col-12 p-md-6 p-lg-4 p-xl-3">
       <div class="card loancard">
         <div class="card__body loancard_content">
           <div class="loancard_content_title">
@@ -18,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
+    <div class="p-col-12 p-md-6 p-lg-4 p-xl-3">
       <div class="card loancard">
         <div class="card__body loancard_content">
           <div class="loancard_content_title">
@@ -33,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
+    <div class="p-col-12 p-md-6 p-lg-4 p-xl-3">
       <div class="card loancard">
         <div class="card__body loancard_content">
           <div class="loancard_content_title">

@@ -1,0 +1,32 @@
+@import '../../styles/abstract/variables';
+
+.signout{
+    height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_confirm{
+        text-align: center;
+        
+        &--text{
+            margin: .5rem 0;
+            font-size: 1.5rem;
+        }
+
+        &--button{
+            margin: .5rem 0;
+            text-transform: capitalize;
+
+            i{
+                font-size: 1.25rem;
+                margin: 0 .5rem;
+            }
+
+            .isloading{
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

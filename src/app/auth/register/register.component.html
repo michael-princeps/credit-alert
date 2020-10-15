@@ -7,43 +7,74 @@
       Already have an account? <a [routerLink]="['/auth/login']">Sign in</a>
     </span>
   </div>
-  <form autocomplete="off" [formGroup]="registerForm">
+  <form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="signUserUp(registerForm.value)">
     <div class="p-fluid">
-      <div class="p-field">
-        <input type="text" class="p-inputtext-lg" formControlName="name" pInputText placeholder="Full Name">
-        <ng-container *ngIf="(formControls.name.dirty || formControls.name.touched) && formControls.name.errors">
-            <span id="name-help" class="p-invalid p-mt-2 p-d-block">Please enter name</span>
-          </ng-container>
-      </div>
+     <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <input type="text" class="p-inputtext-lg" formControlName="first_name" pInputText placeholder="First Name">
+            <ng-container *ngIf="(formControls.first_name.dirty || formControls.first_name.touched) && formControls.first_name.errors">
+                <span id="first_name-help" class="p-invalid p-mt-2 p-d-block">First name require</span>
+              </ng-container>
+          </div>
+          <div class="p-field p-col">
+            <input type="text" class="p-inputtext-lg" formControlName="last_name" pInputText placeholder="Last Name">
+            <ng-container *ngIf="(formControls.last_name.dirty || formControls.last_name.touched) && formControls.last_name.errors">
+                <span id="last_name-help" class="p-invalid p-mt-2 p-d-block">Last name required</span>
+              </ng-container>
+          </div>
+     </div>
+     <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col">
+            <p-dropdown styleClass="title-dropdown" [options]="titles" formControlName="title" placeholder="Title" optionLabel="title"></p-dropdown>
+            <ng-container
+              *ngIf="(formControls.title.dirty || formControls.title.touched) && formControls.title.errors">
+              <span id="title-help" class="p-invalid p-mt-2 p-d-block">Please select title</span>
+            </ng-container>
+          </div>
+          <div class="p-field p-col">
+            <input type="tel" class="p-inputtext-lg" formControlName="phone_no" pInputText placeholder="Phone Number">
+            <ng-container
+              *ngIf="(formControls.phone_no.dirty || formControls.phone_no.touched) && formControls.phone_no.errors">
+              <span *ngIf="formControls.phone_no.errors.required" id="phone_no-help" class="p-invalid p-mt-2 p-d-block">Please enter Phone Number</span>
+              <ng-container *ngIf="formControls.phone_no.errors.invalidErr">
+                <span *ngFor="let error of formControls.phone_no.errors.invalidErr" id="phone_no-help" class="p-invalid p-my-2 p-d-block">{{error}}</span>
+            </ng-container>
+            </ng-container>
+          </div>
+       </div>
       <div class="p-field">
         <input type="email" class="p-inputtext-lg" formControlName="email" pInputText placeholder="Email">
         <ng-container *ngIf="(formControls.email.dirty || formControls.email.touched) && formControls.email.errors">
             <span *ngIf="formControls.email.errors.required" id="email-help" class="p-invalid p-my-2 p-d-block">Email is
               required</span>
             <span *ngIf="formControls.email.errors.email" id="email-help" class="p-invalid p-my-2 p-d-block">Please enter valid email only</span>
+            <ng-container *ngIf="formControls.email.errors.invalidErr">
+                <span *ngFor="let error of formControls.email.errors.invalidErr" id="email-help" class="p-invalid p-my-2 p-d-block">{{error}}</span>
+            </ng-container>
           </ng-container>
       </div>
-      <div class="p-fluid p-formgrid p-grid">
-        <div class="p-field p-col-11">
-          <input [type]="hide ? 'password' : 'text'" formControlName="password" aria-describedby="password-help"
-            class="p-inputtext-lg" pInputText placeholder="Password">
-        </div>
-        <div class="p-field p-col-1">
-          <button [icon]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'"
-            class="p-button-lg button--noborder button p-button-text h-100" pButton pRipple type="button"
-            (click)="hide =! hide"></button>
-        </div>
+      <div class="p-fluid">
+        <div class="p-field">
+          <input type="password" formControlName="password" aria-describedby="password-help"
+            class="p-inputtext-lg" pInputText placeholder="Password" (ngModelChange)="updateConfirmPasswordValidator()">
         <ng-container
         *ngIf="(formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
         <span id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
       </ng-container>
-      </div>
-      <div class="p-field">
-        <input type="tel" class="p-inputtext-lg" formControlName="phone_no" pInputText placeholder="Phone Number">
-        <ng-container
-          *ngIf="(formControls.phone_no.dirty || formControls.phone_no.touched) && formControls.phone_no.errors">
-          <span id="phone_no-help" class="p-invalid p-mt-2 p-d-block">Please enter Phone Number</span>
+        </div>
+        <div class="p-field">
+            <input type="password" formControlName="password_confirmation" aria-describedby="password-help"
+              class="p-inputtext-lg" pInputText placeholder="Confirm Password">
+          <ng-container
+          *ngIf="(formControls.password_confirmation.dirty || formControls.password_confirmation.touched) && formControls.password_confirmation.errors">
+          <ng-container *ngIf="formControls.password_confirmation.errors.required">
+            <span id="password_confirmation-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please confirm your password</span>
+          </ng-container>
+          <ng-container *ngIf="formControls.password_confirmation.errors.confirm">
+            <span id="password_confirmation-help" class="p-invalid p-mb-2 p-d-block p-px-2">Passwords do not match</span>
+          </ng-container>
         </ng-container>
+          </div>
       </div>
     </div>
     <!-- <button pButton type="button" label="Register" class="p-button button button--primary button--noborder

@@ -1,0 +1,71 @@
+@import '../../styles/abstract/variables';
+
+.profile {
+
+  &_header {
+    margin-bottom: 3.5rem;
+    text-align: center;
+
+    &-title {
+      font-size: 2rem;
+      margin: 1rem 0;
+      font-weight: bolder;
+      text-transform: capitalize;
+    }
+
+    &-titlesmall {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 1rem 0;
+      color: $color-primary;
+
+      //   a {
+      //     color: $color-primary;
+      //   }
+    }
+  }
+
+  form {
+    input {
+      background-color: $color-off-black;
+      border: none;
+      padding: 1rem;
+      border-radius: .5rem;
+      width: 100%;
+    }
+
+    ::ng-deep {
+      .profile_calendar input {
+        background-color: $color-off-black;
+        border: none;
+        padding: 1rem;
+        font-size: 1.25rem;
+        border-radius: .5rem;
+      }
+
+      .p-datepicker table td>span {
+        font-size: 1.25rem;
+      }
+
+      .state-dropdown.p-dropdown {
+        background-color: $color-off-black;
+        border: none;
+        padding: .4rem .5rem;
+        border-radius: .5rem;
+
+        .p-dropdown-label {
+          font-size: 1.25rem;
+        }
+
+        .p-dropdown-items-wrapper {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .profile_button {
+      text-transform: capitalize;
+    }
+  }
+
+}

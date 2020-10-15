@@ -1,5 +1,5 @@
 .button {
-  border-radius: 0.5rem !important;
+  border-radius: 0.5rem;
   font-style: normal;
   font-weight: bold;
   font-size: $font-size-regular;
@@ -28,5 +28,21 @@
     }
   }
 
+  &--primary-lite{
+    background-color: lighten($color: $color-primary, $amount: 35);
+  }
+
+  &--danger{
+    background-color: $color-danger;
+    color: $color-white;
+
+    &[disabled]{
+      background-color: lighten($color: $color-danger, $amount: 15);
+    }
+  }
+
+  &--raised{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
   
 }

@@ -8,6 +8,11 @@
     </span>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm.value)">
+    <ng-container *ngIf="loginForm.errors && loginForm.errors.unAuthorized">
+      <span class="p-invalid p-my-2 p-d-block p-text-center">
+        {{loginForm.errors.unAuthorized}}
+      </span>
+    </ng-container>
     <div class="p-fluid">
       <div class="p-field">
         <input type="email" formControlName="email" class="p-inputtext-lg" pInputText placeholder="Email">

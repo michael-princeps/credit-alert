@@ -1,0 +1,17 @@
+<div class="signout">
+  <div class="signout_confirm">
+    <p class="signout_confirm--text">Are you sure you want to sign out?</p>
+    <!-- <button class="button button--raised button--danger signout_confirm--button">Sign Out</button> -->
+
+    <button class="button button--raised button--danger signout_confirm--button" type="button" [disabled]="isLogginOut"
+      (click)="logOut()">
+      <ng-container>
+        <span *ngIf="isLogginOut" class="isloading">
+          <i class="pi pi-spin pi-spinner"></i>
+          please wait
+        </span>
+        <span *ngIf="!isLogginOut">Sign Out</span>
+      </ng-container>
+    </button>
+  </div>
+</div>

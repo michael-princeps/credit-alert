@@ -5,6 +5,8 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
 import { SidebarModule } from 'primeng/sidebar';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [CustomCurrencyPipe],
@@ -13,6 +15,8 @@ import { SidebarModule } from 'primeng/sidebar';
     InputTextModule,
     FormsModule,
     SidebarModule,
+    CalendarModule,
+    DropdownModule,
     ReactiveFormsModule,
     ButtonModule
   ],
@@ -21,6 +25,8 @@ import { SidebarModule } from 'primeng/sidebar';
     ButtonModule,
     FormsModule,
     CustomCurrencyPipe,
+    DropdownModule,
+    CalendarModule,
     SidebarModule,
     ReactiveFormsModule,
   ]

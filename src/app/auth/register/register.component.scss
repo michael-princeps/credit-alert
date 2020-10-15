@@ -15,9 +15,9 @@
     &-titlesmall {
       font-size: 1.5rem;
       font-weight: 500;
-      margin: 1rem 0; 
-      
-      a{
+      margin: 1rem 0;
+
+      a {
         color: $color-primary;
       }
     }
@@ -31,20 +31,38 @@
         box-shadow: 0 0 0 0.2rem rgb(245 107 42 / .4) !important;
       }
 
-      i{
+      i {
         font-size: 1.25rem;
       }
     }
 
-    input {
+    input,
+    select {
       background-color: $color-off-black;
       border: none;
       padding: 1rem;
       border-radius: .5rem;
+      width: 100%;
+      // color: #495057;
 
       // &:focus {
       //   box-shadow: 0 0 0 0.2rem rgb(245 107 42 / .4) !important;
       // }
+    }
+
+    ::ng-deep .title-dropdown.p-dropdown {
+      background-color: $color-off-black;
+      border: none;
+      padding: .4rem .5rem;
+      border-radius: .5rem;
+
+      .p-dropdown-label {
+        font-size: 1.25rem;
+      }
+
+      .p-dropdown-items-wrapper {
+        font-size: 1.25rem;
+      }
     }
   }
 }

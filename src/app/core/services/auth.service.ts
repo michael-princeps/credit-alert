@@ -33,22 +33,22 @@ export class AuthService {
 
 
   logIn(user: { email: string, password: string }) {
-    return this.http.post(`${environment.apiUrl}/${this.urlModule}/login`, { user });
+    return this.http.post(`${environment.apiUrl}/${this.urlModule}/login`, user);
   }
 
-  register(newuser: { email: string, password: string, name: string, phone_no: any }) {
-    return this.http.post(`${environment.apiUrl}/${this.urlModule}/register`, { newuser });
+  register(newuser: { email: string, password: string, password_confirmation: string, first_name: string, phone_no: any, title: any }) {
+    return this.http.post(`${environment.apiUrl}/${this.urlModule}/register`, newuser);
   }
 
-  clearSession() {
+  logOut() {
     return this.http.post(`${environment.apiUrl}/${this.urlModule}/logout`, {}).pipe(tap(() => {
       sessionStorage.clear();
     }));
   }
 
-  logOut() {
-    this.clearSession().subscribe(() => {
-      this.router.navigate(['/auth/login']);
-    });
-  }
+  // logOut() {
+  //   this.clearSession().subscribe(() => {
+  //     this.router.navigate(['/auth/login']);
+  //   });
+  // }
 }

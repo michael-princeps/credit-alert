@@ -1,0 +1,99 @@
+<div class="newloan">
+  <div class="p-mb-3 newloan-pageheader">
+    <h3>New Loan</h3>
+  </div>
+  <div class="p-grid">
+    <div class="p-col-12">
+      <div class="p-grid p-ai-center vertical-container">
+        <div class="p-col-12 p-md-6">
+          <div class="newloan--left">
+            <div class="newloan--left_header">
+              <h4 class="newloan--left_header-title">
+                Personal Loan
+              </h4>
+              <span class="newloan--left_header-titlesmall">
+                Just a few minutes away
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="p-col-12 p-md-6">
+          <div class="newloan--right">
+            <div class="p-grid w-100">
+              <div class="p-col-12 p-sm-10 p-md-8 p-lg-8 p-lg-offset-2 p-md-offset-2 p-sm-offset-1">
+                <ng-container *ngIf="showNewLoanForm; else loanApplicationStatus">
+                  <div class="">
+                    <div class="newloan--right_header">
+                      <h4 class="newloan--right_header-title">
+                        Loan Form
+                      </h4>
+                      <span class="newloan--right_header-titlesmall">
+                        Please fill all details
+                      </span>
+                    </div>
+                    <form [formGroup]="newloanForm" (ngSubmit)="applyForLoan(newloanForm.value)">
+                        <ng-container *ngIf="newloanForm.errors && newloanForm.errors.pendingLoan">
+                            <span class="p-invalid p-my-2 p-d-block p-text-center text--regular">
+                              {{newloanForm.errors.pendingLoan}}
+                            </span>
+                          </ng-container>
+                      <div class="p-fluid">
+                        <div class="p-field">
+                          <input type="number" class="p-inputtext-lg" pInputText placeholder="How much do you want?"
+                            formControlName="loan_amount">
+                        </div>
+                        <div class="p-field">
+                          <input type="text" class="p-inputtext-lg" pInputText placeholder="Where do you work?"
+                            formControlName="place_of_work">
+                        </div>
+                        <div class="p-field">
+                          <input type="number" class="p-inputtext-lg" pInputText placeholder="Net Pay (Monthly)"
+                            formControlName="net_pay">
+                        </div>
+                        <div class="p-field">
+                          <p-dropdown styleClass="bank-dropdown" formControlName="bank_code" [filter]="true"
+                            [options]="banks" placeholder="Choose Bank" optionLabel="name"></p-dropdown>
+                        </div>
+                        <div class="p-field">
+                          <input type="number" class="p-inputtext-lg" pInputText placeholder="Your Account Number"
+                            formControlName="acc_no">
+                        </div>
+                      </div>
+                      <div class="p-field">
+                        <!-- <button [disabled]="newloanForm.invalid || isLoading" class="button button--primary button--wide button--raised">
+                                                    Apply
+                                                </button> -->
+                        <button class="button button--primary button--wide button--raised button--noborder apply-btn"
+                          type="submit" [disabled]="newloanForm.invalid || isLoading">
+                          <ng-container>
+                            <i *ngIf="isLoading" class="pi pi-spin pi-spinner"></i>
+                            <span *ngIf="!isLoading">Apply</span>
+                          </ng-container>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </ng-container>
+                <ng-template #loanApplicationStatus>
+                  <div class="p-text-center">
+                    <div class="newloan--left_header">
+                      <h4 class="newloan--left_header-title">
+                        Your application was successful
+                      </h4>
+                      <span class="newloan--left_header-titlesmall">
+                        Please check your mail for next steps
+                      </span>
+                    </div>
+                    <button class="button button--primary button--raised" (click)="resetLoanForm()">
+                      Okay
+                    </button>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
