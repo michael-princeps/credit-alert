@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   urlModule = 'auth';
+  redirectUrl: string;
   constructor(private http: HttpClient, private router: Router) { }
 
   storeToken(token: string) {

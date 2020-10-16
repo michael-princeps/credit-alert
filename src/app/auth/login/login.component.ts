@@ -52,7 +52,11 @@ export class LoginComponent implements OnInit {
       if (user.user.profile_status === '1') {
         this.service.storeUser(user.user);
         setTimeout(() => {
-          this.router.navigate(['/loans']);
+          if (this.service.redirectUrl) {
+            this.router.navigateByUrl(this.service.redirectUrl);
+          } else {
+            this.router.navigate(['/loans']);
+          }
         }, 500);
       } else {
         this.router.navigate(['/profile_update']);
