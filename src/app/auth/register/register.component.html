@@ -1,4 +1,4 @@
-<div class="signupform animate__animated animate__slideInLeft animate__faster">
+<div class="signupform animate__animated animate__fadeIn animate__faster">
   <div class="signupform_header">
     <h4 class="signupform_header-title">
       create your account
@@ -80,7 +80,7 @@
     <!-- <button pButton type="button" label="Register" class="p-button button button--primary button--noborder
         p-button-lg login-btn" ></button> -->
     <button class="button button--primary button--wide button--noborder register-btn" type="submit"
-      [disabled]="registerForm.invalid || loading">
+      [disabled]="registerForm.invalid || loading" [ngClass]="{'button--success': isCreated}">
       <ng-container *ngIf="isCreated; else isNotCreated">
         <i class="pi pi-check"></i>
       </ng-container>

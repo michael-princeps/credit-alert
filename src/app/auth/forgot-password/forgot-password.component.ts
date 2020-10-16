@@ -4,11 +4,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TimeoutError } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  styleUrls: ['./forgot-password.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation(),
+    fadeOutOnLeaveAnimation()
+  ]
 })
 export class ForgotPasswordComponent implements OnInit {
   resetForm: FormGroup;
@@ -16,7 +22,9 @@ export class ForgotPasswordComponent implements OnInit {
   isFinishedSending: boolean;
   showResetForm = true;
 
-  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService) { }
+  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private title: Title) {
+    this.title.setTitle('Credit Alert - Forgot Password');
+   }
 
   ngOnInit(): void {
     this.formInit();

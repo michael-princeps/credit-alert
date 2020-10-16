@@ -3,8 +3,8 @@
     <h3>Your loans</h3>
   </div>
   <ng-container *ngIf="allLoans">
-    <ng-container *ngIf="allLoans.length">
-      <div class="p-grid">
+    <div *ngIf="allLoans.length" >
+      <div class="p-grid" [@slideInUpOnEnter]>
         <div class="p-col-12 p-md-4 p-xl-3" *ngFor="let loan of allLoans">
           <div class="card loancard">
             <div class="card__body">
@@ -31,9 +31,9 @@
           </div>
         </div>
       </div>
-    </ng-container>
-    <ng-container *ngIf="!allLoans.length">
-      <div class="p-grid noloans">
+    </div>
+    <div *ngIf="!allLoans.length">
+      <div class="p-grid noloans" [@fadeInOnEnter] [@fadeOutOnLeave]>
         <div class="p-col-12 p-sm-11 p-md-9 p-lg-6 p-xl-4 p-mx-auto">
           <div class="noloans-card p-text-center">
             <p class="noloans-card--text">You have no loans yet</p>
@@ -43,6 +43,6 @@
           </div>
         </div>
       </div>
-    </ng-container>
+    </div>
   </ng-container>
 </div>

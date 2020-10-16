@@ -33,6 +33,12 @@
         box-shadow: 0 0 0 0.2rem rgb(245 107 42 / .4) !important;
       }
 
+      &.button--success{
+        &:focus {
+          box-shadow: 0 0 0 0.2rem rgb(111 207 151 / .4) !important;
+        }
+      }
+
       i{
         font-size: 1.25rem;
       }

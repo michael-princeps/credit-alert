@@ -4,15 +4,24 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
 import { TimeoutError } from 'rxjs';
 import { LoansService } from '../services/loans.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation, slideInUpOnEnterAnimation } from 'angular-animations';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-all-loans',
   templateUrl: './all-loans.component.html',
-  styleUrls: ['./all-loans.component.scss']
+  styleUrls: ['./all-loans.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation({ delay: 50 }),
+    fadeOutOnLeaveAnimation({ delay: 50 }),
+    slideInUpOnEnterAnimation({ delay: 50 })
+  ]
 })
 export class AllLoansComponent implements OnInit, OnDestroy {
   allLoans: any[] = null;
-  constructor(private service: LoansService, private loadingBar: LoadingBarService, private toastr: ToastrService) { }
+  constructor(private service: LoansService, private loadingBar: LoadingBarService, private toastr: ToastrService, private title: Title) { 
+    this.title.setTitle('Credit Alert - Your Loans');
+  }
 
   ngOnInit(): void {
     this.fetchLoans();

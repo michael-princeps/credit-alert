@@ -17,6 +17,11 @@
         &--button{
             margin: .5rem 0;
             text-transform: capitalize;
+            transition: all .3s ease-in-out;
+
+            &:hover{
+                transform: scale(1.2);
+            }
 
             i{
                 font-size: 1.25rem;

@@ -6,18 +6,26 @@ import { TimeoutError } from 'rxjs';
 import { titles } from 'src/app/auth/models/titles';
 import { banks } from 'src/app/shared/models/banks';
 import { LoansService } from '../services/loans.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-apply-new-loan',
   templateUrl: './apply-new-loan.component.html',
-  styleUrls: ['./apply-new-loan.component.scss']
+  styleUrls: ['./apply-new-loan.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation(),
+    fadeOutOnLeaveAnimation()
+  ]
 })
 export class ApplyNewLoanComponent implements OnInit {
   banks: any[] = banks.sort((a, b) => a.name.localeCompare(b.name));
   isLoading: boolean;
   newloanForm: FormGroup;
   showNewLoanForm = true;
-  constructor(private fb: FormBuilder, private service: LoansService, private toastr: ToastrService) { }
+  constructor(private fb: FormBuilder, private service: LoansService, private toastr: ToastrService, private title: Title) { 
+    this.title.setTitle('Credit Alert - New Loan');
+  }
 
   ngOnInit(): void {
     this.initNewLoanForm();

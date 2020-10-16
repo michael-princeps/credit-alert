@@ -1,4 +1,4 @@
-<div class="loginform animate__animated animate__slideInLeft animate__faster">
+<div class="loginform animate__animated animate__fadeIn animate__faster">
   <div class="loginform_header">
     <h4 class="loginform_header-title">
       hi, welcome back
@@ -45,7 +45,7 @@
     </div>
     <!-- <button [disabled]="loginForm.invalid || loading" pButton type="submit" [label]="loading ? 'Logging In...' : 'Log In'" [icon]="isAuthenticated ? 'pi pi-check' : 'pi pi-spin'" class="p-button button button--primary button--noborder
         p-button-lg login-btn" ></button> -->
-        <button class="button button--primary button--wide button--noborder login-btn" type="submit" [disabled]="loading">
+        <button class="button button--primary button--wide button--noborder login-btn" type="submit" [disabled]="loading" [ngClass]="{'button--success': isAuthenticated}">
           <ng-container *ngIf="isAuthenticated; else isNotAuthenticated">
             <i class="pi pi-check" ></i>
           </ng-container>

@@ -33,6 +33,19 @@
     }
   }
 
+  &--success {
+    background: $color-success;
+    color: $color-white;
+
+    &[disabled] {
+      background-color: lighten($color: $color-success, $amount: 30);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgb(111 207 151 / .4) !important;
+    }
+  }
+
   &--primary-lite {
     background-color: lighten($color: $color-primary, $amount: 35);
   }

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TimeoutError } from 'rxjs';
@@ -20,7 +21,9 @@ export class RegisterComponent implements OnInit {
   isCreated: boolean;
   hide = true;
 
-  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private router: Router, private title: Title) {
+    this.title.setTitle('Credit Alert - Register');
+   }
 
   ngOnInit(): void {
     this.formInit();

@@ -5,6 +5,7 @@ import { TimeoutError } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
   loading: boolean;
   isAuthenticated: boolean;
   hide = true;
-  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private router: Router, private title: Title) { 
+    this.title.setTitle('Credit Alert - Login');
+  }
 
   ngOnInit(): void {
     this.formInit();

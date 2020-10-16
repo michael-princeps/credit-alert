@@ -66,4 +66,8 @@ export class AuthService {
   updateProfile(profile: any) {
     return this.http.post(`${environment.apiUrl}/${this.urlModule}/updateProfile`, profile);
   }
+
+  clearSessionStorage() {
+    return sessionStorage.clear();
+  }
 }

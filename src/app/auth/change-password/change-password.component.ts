@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TimeoutError } from 'rxjs';
@@ -16,7 +17,9 @@ export class ChangePasswordComponent implements OnInit {
   loading: boolean;
   isChangeSuccessful: boolean;
   userDetails: any;
-  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private route: ActivatedRoute, private router: Router, private title: Title) {
+    this.title.setTitle('Credit Alert - Change Password');
+   }
 
   ngOnInit(): void {
     this.formInit();

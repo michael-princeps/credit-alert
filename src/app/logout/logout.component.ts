@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../core/services/auth.service';
@@ -10,7 +11,9 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class LogoutComponent implements OnInit {
   isLogginOut: boolean;
-  constructor(private service: AuthService, private router: Router, private toastr: ToastrService) { }
+  constructor(private service: AuthService, private router: Router, private toastr: ToastrService, private title: Title) {
+    this.title.setTitle('Credit Alert - Sign Out');
+   }
 
   ngOnInit(): void {
   }
