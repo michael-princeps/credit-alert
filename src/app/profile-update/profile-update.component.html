@@ -11,11 +11,11 @@
           </span>
         </div>
         <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile(updateProfileForm.value)">
-            <ng-container *ngIf="updateProfileForm.errors && updateProfileForm.errors.badRequest">
-                <span class="p-invalid p-my-2 p-d-block p-text-center">
-                  {{updateProfileForm.errors.badRequest}}
-                </span>
-              </ng-container>
+          <ng-container *ngIf="updateProfileForm.errors && updateProfileForm.errors.badRequest">
+            <span class="p-invalid p-my-2 p-d-block p-text-center">
+              {{updateProfileForm.errors.badRequest}}
+            </span>
+          </ng-container>
           <div class="p-fluid">
             <div class="p-field">
               <input type="tel" formControlName="alt_phone_no" class="p-inputtext-lg" pInputText
@@ -29,8 +29,9 @@
               </ng-container>
             </div>
             <div class="p-field">
-              <p-calendar dateFormat="yy-mm-dd" styleClass="profile_calendar" formControlName="d_o_b" inputId="basic" [monthNavigator]="true" [yearNavigator]="true" yearRange="1950:2002"
-                placeholder="Date of birth"></p-calendar>
+              <p-calendar dateFormat="yy-mm-dd" styleClass="profile_calendar" formControlName="d_o_b" inputId="basic"
+                [monthNavigator]="true" [yearNavigator]="true" yearRange="1950:2002" placeholder="Date of birth">
+              </p-calendar>
               <ng-container
                 *ngIf="(formControls.d_o_b.dirty || formControls.d_o_b.touched) && formControls.d_o_b.errors">
                 <span *ngIf="formControls.d_o_b.errors.required" id="d_o_b-help"
@@ -80,7 +81,7 @@
             </div>
             <div class="p-field p-mt-5">
               <button class="button button--wide button--primary button--raised profile_button" type="submit"
-                [disabled]=" isUpdating">
+                [disabled]="updateProfileForm.invalid || isUpdating">
                 <ng-container *ngIf="isUpdated; else isNotAuthenticated">
                   <i class="pi pi-check"></i>
                 </ng-container>
