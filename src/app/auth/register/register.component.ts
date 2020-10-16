@@ -71,23 +71,26 @@ export class RegisterComponent implements OnInit {
       this.registerForm.enable();
       this.loading = false;
       console.log(user);
-      if (user.status === 'error') {
-        Object.keys(this.registerForm.controls).forEach((key) => {
-          if (user.data[key]) {
-            console.log(user.data[key]);
-            this.registerForm.get(key).setErrors({ invalidErr: user.data[key] });
-          }
-        });
-      } else {
-        this.toastr.success('Success', 'Registration Successful');
-        this.router.navigate(['/auth/login']);
-      }
+      this.toastr.success('Success', 'Registration Successful');
+      this.router.navigate(['/auth/login']);
     }, (error: any) => {
       this.loading = false;
       this.registerForm.enable();
       console.log(error);
       if (error instanceof HttpErrorResponse) {
         this.toastr.error('Error', error.error ? error.error.error : 'An error has occured. Please try again later');
+        if (error.status === 400) {
+          console.log(error.error);
+          const badRequestError = error.error;
+          Object.keys(this.registerForm.controls).forEach((key) => {
+            if (badRequestError.data[key]) {
+              console.log(badRequestError.data[key]);
+              this.registerForm.get(key).setErrors({ invalidErr: badRequestError.data[key] });
+            }
+          });
+        } else {
+          this.toastr.error(error.error ? error.error.error : 'An error has occured. Please try again later', 'Error');
+        }
       } else if (error instanceof TimeoutError) {
         this.toastr.error('Time Out!', 'Server timeout. Please try again later');
       }

@@ -12,6 +12,7 @@ import { TokenInterceptor } from './core/interceptors/token-interceptor';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 import { SharedModule } from './shared/shared.module';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
+    LoadingBarModule,
     ToastrModule.forRoot(),
     AppRoutingModule
   ],

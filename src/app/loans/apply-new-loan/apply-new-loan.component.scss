@@ -9,7 +9,8 @@
   }
 
   &--right {
-    background-color: $light-background;
+    // background-color: $light-background;
+    background-color: $color-white;
     padding: 3.5rem 1rem;
     border-radius: 1rem;
     max-height: 50rem;
@@ -55,15 +56,15 @@
       }
 
       input {
-        //   background-color: $color-off-black;
-        //   border: none;
+        background-color: $color-off-black;
+        border: none;
         padding: 1rem;
         border-radius: .5rem;
       }
 
       ::ng-deep .bank-dropdown.p-dropdown {
-        // background-color: $color-off-black;
-        // border: none;
+        background-color: $color-off-black;
+        border: none;
         padding: .4rem .5rem;
         border-radius: .5rem;
 

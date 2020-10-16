@@ -39,13 +39,13 @@
      
       <div class="p-field">
         <div class="p-text-right forgot-pwd">
-          <a [routerLink]="['/auth/reset-password']" routerLinkActive="router-link-active">Forgot Password?</a>
+          <a [routerLink]="['/auth/forgot_password']" routerLinkActive="router-link-active">Forgot Password?</a>
         </div>
       </div>
     </div>
     <!-- <button [disabled]="loginForm.invalid || loading" pButton type="submit" [label]="loading ? 'Logging In...' : 'Log In'" [icon]="isAuthenticated ? 'pi pi-check' : 'pi pi-spin'" class="p-button button button--primary button--noborder
         p-button-lg login-btn" ></button> -->
-        <button class="button button--primary button--wide button--noborder login-btn" type="submit" [disabled]="loginForm.invalid || loading">
+        <button class="button button--primary button--wide button--noborder login-btn" type="submit" [disabled]="loading">
           <ng-container *ngIf="isAuthenticated; else isNotAuthenticated">
             <i class="pi pi-check" ></i>
           </ng-container>

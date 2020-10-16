@@ -7,10 +7,11 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthComponent } from './auth.component';
 import { SharedModule } from '../shared/shared.module';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ForgotPasswordComponent, AuthComponent],
+  declarations: [LoginComponent, RegisterComponent, ForgotPasswordComponent, AuthComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -23,7 +23,7 @@ export class TokenInterceptor implements HttpInterceptor {
             if (error instanceof HttpErrorResponse && error.status === 401) {
                 this.router.navigate(['/auth']);
                 // this.toastr.error('You have been signed out', 'Unauthorised!');
-                return EMPTY;
+                return throwError(error);
             } else {
                 return throwError(error);
             }

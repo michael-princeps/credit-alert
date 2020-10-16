@@ -1,34 +1,48 @@
 <div class="loans">
   <div class="p-mb-3 loans-pageheader">
-    <h3>All Loans</h3>
+    <h3>Your loans</h3>
   </div>
   <ng-container *ngIf="allLoans">
-    <div class="p-grid">
-      <div class="p-col-12 p-md-4 p-xl-3" *ngFor="let loan of allLoans">
-        <div class="card loancard">
-          <div class="card__body">
-            <div class="p-text-right">
-              <span class="loancard--status">
-                active
-              </span>
+    <ng-container *ngIf="allLoans.length">
+      <div class="p-grid">
+        <div class="p-col-12 p-md-4 p-xl-3" *ngFor="let loan of allLoans">
+          <div class="card loancard">
+            <div class="card__body">
+              <div class="p-text-right">
+                <span class="loancard--status">
+                  active
+                </span>
+              </div>
+              <div>
+                <span class="loancard--title">
+                  loan amount
+                </span>
+                <span class="loancard--amount">
+                  {{loan.loan_amount | currency:'₦ '}}
+                </span>
+                <span class="loancard--date">
+                  due date: {{loan.due_date | date}}
+                </span>
+              </div>
+              <button class="button button--wide button--primary-lite view-btn">
+                view
+              </button>
             </div>
-            <div>
-              <span class="loancard--title">
-                loan amount
-              </span>
-              <span class="loancard--amount">
-                {{loan.loan_amount | currency:'₦ '}}
-              </span>
-              <span class="loancard--date">
-                due date: {{loan.due_date | date}}
-              </span>
-            </div>
-            <button class="button button--wide button--primary-lite view-btn">
-              view
-            </button>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="!allLoans.length">
+      <div class="p-grid noloans">
+        <div class="p-col-12 p-sm-11 p-md-9 p-lg-6 p-xl-4 p-mx-auto">
+          <div class="noloans-card p-text-center">
+            <p class="noloans-card--text">You have no loans yet</p>
+            <p class="noloans-card--text"><a class="noloans-card--text-action" [routerLink]="['new']">Apply for one
+                now?</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
   </ng-container>
 </div>

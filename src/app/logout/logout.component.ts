@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../core/services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class LogoutComponent implements OnInit {
   isLogginOut: boolean;
-  constructor(private service: AuthService, private router: Router) { }
+  constructor(private service: AuthService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +20,9 @@ export class LogoutComponent implements OnInit {
     this.service.logOut().subscribe(() => {
       this.isLogginOut = true;
       this.router.navigate(['/auth/login']);
+    }, (error: any) => {
+      this.isLogginOut = false;
+      this.toastr.error('An unknown error has occured');
     });
   }
 }

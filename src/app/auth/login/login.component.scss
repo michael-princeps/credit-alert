@@ -54,8 +54,12 @@
 
       a {
         color: $color-primary;
-        text-decoration: unset;
+        text-decoration: none;
         font-size: 1.25rem;
+
+        &:hover{
+          text-decoration: underline !important;
+        }
       }
     }
   }

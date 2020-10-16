@@ -1,12 +1,13 @@
 @import '../../../styles/abstract/variables';
 
 .loans {
-    &-pageheader {
-        h3 {
-          font-size: 2.5rem;
-          color: $color-primary;
-        }
-      }
+  &-pageheader {
+    h3 {
+      font-size: 2.5rem;
+      color: $color-primary;
+    }
+  }
+
   .loancard {
     &--status {
       background: $color-green;
@@ -46,11 +47,38 @@
       text-transform: capitalize;
     }
 
-    .view-btn{
-        line-height: 1;
-        padding: .5rem 1rem;
-        margin: .75rem 0 0;
-        text-transform: capitalize;
+    .view-btn {
+      line-height: 1;
+      padding: .5rem 1rem;
+      margin: .75rem 0 0;
+      text-transform: capitalize;
+    }
+  }
+
+  .noloans {
+    height: 75vh;
+    align-items: center;
+
+    &-card {
+      background-color: $color-white;
+      padding: 5rem;
+      border-radius: .75rem;
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+
+      &--text {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 0;
+
+        &-action {
+          color: $color-primary;
+          cursor: pointer;
+          text-decoration: none;
+
+          &:hover{
+              text-decoration: underline !important;
+          }
+        }
+      }
     }
   }
 }
