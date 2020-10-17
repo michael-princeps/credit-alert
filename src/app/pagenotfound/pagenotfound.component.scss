@@ -1,0 +1,76 @@
+@import '../../styles/abstract/variables';
+
+.main{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    min-height: 100vh;
+    background-color: $app-background;
+
+    &_side{
+        width: 22.5rem;
+        position: fixed;
+        height: 100vh;
+        overflow: auto;
+        background-color: $color-white;
+        display: none;
+
+        @media all and (min-width: 768px) {
+            display: block;
+        }
+    }
+    &_body{
+        width: 100%;
+        margin-left: auto;
+        padding: 2rem 1.5rem;
+
+        @media all and (min-width: 768px) {
+            width: calc(100% - 22.5rem);
+        }
+
+
+        .notfound {
+            height: calc(100vh - 4rem);
+            align-items: center;
+        
+            &-card {
+            //   background-color: $color-white;
+              padding: 5rem;
+            //   border-radius: .75rem;
+            //   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+        
+              img {
+                width: 100%;
+                height: 20rem;
+              }
+        
+              &--text {
+                font-size: 1.5rem;
+                margin: 1.5rem 0 0;
+
+                &-large{
+                    font-size: 3rem;
+                    font-weight: 700;
+                }
+        
+                &-action {
+                  color: $color-primary;
+                  cursor: pointer;
+                  text-decoration: none;
+        
+                  &:hover {
+                    text-decoration: underline !important;
+                  }
+                }
+              }
+
+              &--button{
+                text-transform: capitalize;
+                display: inline-block;
+                text-decoration: none;
+                margin: 1.5rem 0 0;
+            }
+            }
+          }
+    }
+}

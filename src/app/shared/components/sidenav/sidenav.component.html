@@ -1,0 +1,71 @@
+<div class="sidenav">
+  <a class="sidenav_logo" [routerLink]="['/']">
+    credit alert
+  </a>
+  <ng-container *ngIf="service.isLoggedIn()">
+    <div class="sidenav_menu">
+      <ul class="sidenav_menu_links">
+        <!-- <li class="sidenav_menu_links-submenu" [routerLink]="['/dashboard']"
+          routerLinkActive="sidenav_menu_links-submenu--active">
+          <div class="sidenav_menu_links--title">
+            <i class="pi pi-home iconLeft"></i>
+            <span>
+              Overview
+            </span>
+          </div>
+        </li> -->
+        <li class="accordion sidenav_menu_links-submenu" [ngClass]="{'sidenav_menu_links-submenu--active': loansChild1RLA.isActive || loansChild2RLA.isActive}">
+          <div class="sidenav_menu_links--title">
+            <i class="pi pi-money-bill iconLeft"></i>
+            <span>
+              Loans
+            </span>
+            <i class="pi pi-angle-right iconRight">
+            </i>
+          </div>
+        </li>
+        <ul class="sidenav_menu_links sidenav_submenu_links">
+          <li class="sidenav_menu_links-submenu" [routerLink]="['/loans/new']"
+            routerLinkActive="sidenav_menu_links-submenu--active" #loansChild1RLA="routerLinkActive">
+            <div class="sidenav_menu_links--title">
+              <i class="pi pi-plus-circle iconLeft"></i>
+              <span>
+                New Loan
+              </span>
+            </div>
+          </li>
+          <li class="sidenav_menu_links-submenu" [routerLink]="['/loans']"
+            routerLinkActive="sidenav_menu_links-submenu--active"  [routerLinkActiveOptions]="{exact: true}" #loansChild2RLA="routerLinkActive">
+            <div class="sidenav_menu_links--title">
+              <i class="pi pi-list iconLeft"></i>
+              <span>
+                All loans
+              </span>
+            </div>
+          </li>
+        </ul>
+        <li class="sidenav_menu_links-submenu"
+        routerLinkActive="sidenav_menu_links-submenu--active">
+        <div class="sidenav_menu_links--title">
+          <i class="pi pi-cog iconLeft"></i>
+          <span>
+            Settings
+          </span>
+        </div>
+      </li>
+      </ul>
+    </div>
+    <div class="sidenav_menu p-mt-auto">
+      <ul class="sidenav_menu_links">
+        <li class="sidenav_menu_links-submenu sidenav_menu_links-submenu--exit" [routerLink]="['/signout_confirm']">
+          <div class="sidenav_menu_links--title">
+            <i class="pi pi-sign-out iconLeft"></i>
+            <span>
+              Log out
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>

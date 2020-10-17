@@ -3,9 +3,9 @@
     <h3>New Loan</h3>
   </div>
   <div class="p-grid">
-    <div class="p-col-12">
+    <div class="p-col-12 p-md-11 p-xl-10 p-mx-auto">
       <div class="p-grid p-ai-center vertical-container">
-        <div class="p-col-12 p-md-6">
+        <div class="p-col-12 p-md-5 p-lg-6">
           <div class="newloan--left">
             <div class="newloan--left_header">
               <h4 class="newloan--left_header-title">
@@ -17,10 +17,10 @@
             </div>
           </div>
         </div>
-        <div class="p-col-12 p-md-6">
+        <div class="p-col-12 p-md-7 p-lg-6">
           <div class="newloan--right">
             <div class="p-grid w-100">
-              <div class="p-col-12 p-sm-10 p-md-8 p-lg-8 p-lg-offset-2 p-md-offset-2 p-sm-offset-1">
+              <div class="p-col-12 p-sm-10 p-md-11 p-lg-10 p-xl-9 p-mx-auto">
                 <div *ngIf="showNewLoanForm;">
                   <div class="" [@fadeInOnEnter] [@fadeOutOnLeave]>
                     <div class="newloan--right_header">
@@ -74,8 +74,9 @@
                 <div *ngIf="!showNewLoanForm">
                   <div class="p-text-center" [@fadeInOnEnter] [@fadeOutOnLeave]>
                     <div class="newloan--left_header">
+                      <img src="assets/img/high-five.svg" alt="" srcset="">
                       <h4 class="newloan--left_header-title">
-                        Your application was successful
+                        Hurray!! Your application was successful
                       </h4>
                       <span class="newloan--left_header-titlesmall">
                         Please check your mail for next steps

@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <section class="main">
+        <p-sidebar [(visible)]="display">
+            <app-sidenav></app-sidenav>
+        </p-sidebar>
+        <aside class="main_side">
+            <app-sidenav></app-sidenav>
+        </aside>
+        <main class="main_body">
+            <div class="p-text-right p-d-md-none">
+                <button pButton (click)="display = true" pRipple type="button" icon="pi pi-bars" class="p-button-plain p-button-outlined p-button-secondary p-button-lg"></button>
+            </div>
+            <div class="p-grid notfound">
+                <div class="p-col-12 p-sm-10 p-mx-auto">
+                  <div class="notfound-card p-text-center">
+                    <img src="assets/img/notfound.svg" alt="">
+                    <p class="notfound-card--text notfound-card--text-large">Lost your way?</p>
+                    <!-- <p class="notfound-card--text"><a class="notfound-card--text-action" [routerLink]="['new']">Apply for one
+                        now?</a>
+                    </p> -->
+                    <a role="button" class="button button--primary button--raised notfound-card--button" [routerLink]="['/']" >
+                        go home
+                    </a>
+                     <p class="notfound-card--text">
+                        The page you are looking for does not exist or has changed
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </main>
+    </section>
+</div>

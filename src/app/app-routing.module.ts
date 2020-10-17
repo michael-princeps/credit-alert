@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'profile_update',
     component: ProfileUpdateComponent
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pagenotfound/pagenotfound.module').then(m => m.PagenotfoundModule)
   }
 ];
 
