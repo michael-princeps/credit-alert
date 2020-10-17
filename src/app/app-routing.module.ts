@@ -18,6 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'profile_update',
+    canActivate: [AuthGuard],
     component: ProfileUpdateComponent
   },
   {
