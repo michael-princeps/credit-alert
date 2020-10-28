@@ -9,72 +9,92 @@
   </div>
   <form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="signUserUp(registerForm.value)">
     <div class="p-fluid">
-     <div class="p-fluid p-formgrid p-grid">
+      <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col">
-            <input type="text" class="p-inputtext-lg" formControlName="first_name" pInputText placeholder="First Name">
-            <ng-container *ngIf="(formControls.first_name.dirty || formControls.first_name.touched) && formControls.first_name.errors">
-                <span id="first_name-help" class="p-invalid p-mt-2 p-d-block">First name require</span>
-              </ng-container>
-          </div>
-          <div class="p-field p-col">
-            <input type="text" class="p-inputtext-lg" formControlName="last_name" pInputText placeholder="Last Name">
-            <ng-container *ngIf="(formControls.last_name.dirty || formControls.last_name.touched) && formControls.last_name.errors">
-                <span id="last_name-help" class="p-invalid p-mt-2 p-d-block">Last name required</span>
-              </ng-container>
-          </div>
-     </div>
-     <div class="p-fluid p-grid p-formgrid">
+          <input type="text" class="p-inputtext-lg" formControlName="first_name" pInputText placeholder="First Name">
+          <ng-container
+            *ngIf="(formControls.first_name.dirty || formControls.first_name.touched) && formControls.first_name.errors">
+            <span *ngIf="formControls.first_name.errors.required" id="first_name-help"
+              class="p-invalid p-mt-2 p-d-block">First name required</span>
+            <span *ngFor="let error of formControls.first_name.errors.invalidErr" id="first_name-help"
+              class="p-invalid p-my-2 p-d-block">{{error}}</span>
+          </ng-container>
+        </div>
         <div class="p-field p-col">
-            <p-dropdown styleClass="title-dropdown" [options]="titles" formControlName="title" placeholder="Title" optionLabel="title"></p-dropdown>
-            <ng-container
-              *ngIf="(formControls.title.dirty || formControls.title.touched) && formControls.title.errors">
-              <span id="title-help" class="p-invalid p-mt-2 p-d-block">Please select title</span>
+          <input type="text" class="p-inputtext-lg" formControlName="last_name" pInputText placeholder="Last Name">
+          <ng-container
+            *ngIf="(formControls.last_name.dirty || formControls.last_name.touched) && formControls.last_name.errors">
+            <span *ngIf="formControls.last_name.errors.required" id="last_name-help"
+              class="p-invalid p-mt-2 p-d-block">Last name required</span>
+            <span *ngFor="let error of formControls.last_name.errors.invalidErr" id="last_name-help"
+              class="p-invalid p-my-2 p-d-block">{{error}}</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col">
+          <p-dropdown styleClass="title-dropdown" [options]="titles" formControlName="title" placeholder="Title"
+            optionLabel="title"></p-dropdown>
+          <ng-container *ngIf="(formControls.title.dirty || formControls.title.touched) && formControls.title.errors">
+            <span *ngIf="formControls.title.errors.required" id="title-help" class="p-invalid p-mt-2 p-d-block">Please
+              select title</span>
+            <span *ngFor="let error of formControls.title.errors.invalidErr" id="title-help"
+              class="p-invalid p-my-2 p-d-block">{{error}}</span>
+          </ng-container>
+        </div>
+        <div class="p-field p-col">
+          <input type="tel" class="p-inputtext-lg" formControlName="phone_no" pInputText placeholder="Phone Number">
+          <ng-container
+            *ngIf="(formControls.phone_no.dirty || formControls.phone_no.touched) && formControls.phone_no.errors">
+            <span *ngIf="formControls.phone_no.errors.required" id="phone_no-help"
+              class="p-invalid p-mt-2 p-d-block">Please enter Phone Number</span>
+            <ng-container *ngIf="formControls.phone_no.errors.invalidErr">
+              <span *ngFor="let error of formControls.phone_no.errors.invalidErr" id="phone_no-help"
+                class="p-invalid p-my-2 p-d-block">{{error}}</span>
             </ng-container>
-          </div>
-          <div class="p-field p-col">
-            <input type="tel" class="p-inputtext-lg" formControlName="phone_no" pInputText placeholder="Phone Number">
-            <ng-container
-              *ngIf="(formControls.phone_no.dirty || formControls.phone_no.touched) && formControls.phone_no.errors">
-              <span *ngIf="formControls.phone_no.errors.required" id="phone_no-help" class="p-invalid p-mt-2 p-d-block">Please enter Phone Number</span>
-              <ng-container *ngIf="formControls.phone_no.errors.invalidErr">
-                <span *ngFor="let error of formControls.phone_no.errors.invalidErr" id="phone_no-help" class="p-invalid p-my-2 p-d-block">{{error}}</span>
-            </ng-container>
-            </ng-container>
-          </div>
-       </div>
+          </ng-container>
+        </div>
+      </div>
       <div class="p-field">
         <input type="email" class="p-inputtext-lg" formControlName="email" pInputText placeholder="Email">
         <ng-container *ngIf="(formControls.email.dirty || formControls.email.touched) && formControls.email.errors">
-            <span *ngIf="formControls.email.errors.required" id="email-help" class="p-invalid p-my-2 p-d-block">Email is
-              required</span>
-            <span *ngIf="formControls.email.errors.email" id="email-help" class="p-invalid p-my-2 p-d-block">Please enter valid email only</span>
-            <ng-container *ngIf="formControls.email.errors.invalidErr">
-                <span *ngFor="let error of formControls.email.errors.invalidErr" id="email-help" class="p-invalid p-my-2 p-d-block">{{error}}</span>
-            </ng-container>
-          </ng-container>
+          <span *ngIf="formControls.email.errors.required" id="email-help" class="p-invalid p-my-2 p-d-block">Email is
+            required</span>
+          <span *ngIf="formControls.email.errors.email" id="email-help" class="p-invalid p-my-2 p-d-block">Please enter
+            valid email only</span>
+          <span *ngFor="let error of formControls.email.errors.invalidErr" id="email-help"
+            class="p-invalid p-my-2 p-d-block">{{error}}</span>
+        </ng-container>
       </div>
       <div class="p-fluid">
         <div class="p-field">
-          <input type="password" formControlName="password" aria-describedby="password-help"
-            class="p-inputtext-lg" pInputText placeholder="Password" (ngModelChange)="updateConfirmPasswordValidator()">
-        <ng-container
-        *ngIf="(formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
-        <span id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
-      </ng-container>
+          <input type="password" formControlName="password" aria-describedby="password-help" class="p-inputtext-lg"
+            pInputText placeholder="Password" (ngModelChange)="updateConfirmPasswordValidator()">
+          <ng-container
+            *ngIf="(formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
+            <span *ngIf="formControls.password.errors.required" id="password-help"
+              class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
+            <span *ngFor="let error of formControls.password.errors.invalidErr" id="password-help"
+              class="p-invalid p-my-2 p-d-block">{{error}}</span>
+            <span *ngIf="formControls.password.errors.minlength" id="password-help"
+              class="p-invalid p-mb-2 p-d-block p-px-2">Please must be more than 6 characters</span>
+          </ng-container>
         </div>
         <div class="p-field">
-            <input type="password" formControlName="password_confirmation" aria-describedby="password-help"
-              class="p-inputtext-lg" pInputText placeholder="Confirm Password">
+          <input type="password" formControlName="password_confirmation" aria-describedby="password-help"
+            class="p-inputtext-lg" pInputText placeholder="Confirm Password">
           <ng-container
-          *ngIf="(formControls.password_confirmation.dirty || formControls.password_confirmation.touched) && formControls.password_confirmation.errors">
-          <ng-container *ngIf="formControls.password_confirmation.errors.required">
-            <span id="password_confirmation-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please confirm your password</span>
+            *ngIf="(formControls.password_confirmation.dirty || formControls.password_confirmation.touched) && formControls.password_confirmation.errors">
+            <ng-container *ngIf="formControls.password_confirmation.errors.required">
+              <span id="password_confirmation-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please confirm your
+                password</span>
+            </ng-container>
+            <ng-container *ngIf="formControls.password_confirmation.errors.confirm">
+              <span id="password_confirmation-help" class="p-invalid p-mb-2 p-d-block p-px-2">Passwords do not
+                match</span>
+            </ng-container>
           </ng-container>
-          <ng-container *ngIf="formControls.password_confirmation.errors.confirm">
-            <span id="password_confirmation-help" class="p-invalid p-mb-2 p-d-block p-px-2">Passwords do not match</span>
-          </ng-container>
-        </ng-container>
-          </div>
+        </div>
       </div>
     </div>
     <!-- <button pButton type="button" label="Register" class="p-button button button--primary button--noborder

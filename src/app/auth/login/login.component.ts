@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loading: boolean;
   isAuthenticated: boolean;
   hide = true;
-  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private router: Router, private title: Title) { 
+  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService, private router: Router, private title: Title) {
     this.title.setTitle('Credit Alert - Login');
   }
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   formInit() {
     this.loginForm = this.fb.group({
       email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]]
+      password: [null, [Validators.required, Validators.minLength(6)]]
     }, {
       updateOn: 'submit'
     });

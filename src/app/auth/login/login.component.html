@@ -32,7 +32,8 @@
         </div>
         <ng-container
         *ngIf="(formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
-        <span id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
+        <span *ngIf="formControls.password.errors.required" id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please enter password</span>
+        <span *ngIf="formControls.password.errors.minlength" id="password-help" class="p-invalid p-mb-2 p-d-block p-px-2">Please must be at least 6 characters</span>
       </ng-container>
       </div>
      

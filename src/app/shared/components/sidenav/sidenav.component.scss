@@ -60,11 +60,11 @@
         i {
           font-size: 1.5rem;
 
-          &.iconLeft{
+          &.iconLeft {
             margin-right: 1rem;
           }
 
-          &.iconRight{
+          &.iconRight {
             margin-left: auto;
           }
         }
@@ -72,10 +72,14 @@
     }
   }
 
+  &_submenu_wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .25s ease;
+  }
+
   &_submenu_links {
     padding: .5rem 1rem;
-    display: none;
-    transition: all 0.5s ease-in-out;
 
     .sidenav_menu_links--title {
       height: 3rem;
@@ -83,12 +87,21 @@
     }
   }
 
-  .accordion-open {
-      .iconRight{
-          transform: rotate(90deg);
+  .accordion {
+    .iconRight {
+      transition: all .25s ease;
+    }
+
+    &-open {
+      .iconRight {
+        transform: rotate(90deg);
       }
-    +.submenu-show {
-      display: block !important;
+
+      +.submenu-show {
+        display: block !important;
+        max-height: 9999px;
+        transition: all .25s ease;
+      }
     }
   }
 }

@@ -2,9 +2,10 @@
 .auth {
   justify-content: center;
   overflow: auto;
+  position: relative;
 
   &_bg {
-    position: fixed;
+    position: absolute;
     right: 0;
     height: 100%;
     background-color: rgb(245 107 42 / .5);

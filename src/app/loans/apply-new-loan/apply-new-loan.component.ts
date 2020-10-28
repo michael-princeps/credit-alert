@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TimeoutError } from 'rxjs';
 import { titles } from 'src/app/auth/models/titles';
@@ -23,7 +23,7 @@ export class ApplyNewLoanComponent implements OnInit {
   isLoading: boolean;
   newloanForm: FormGroup;
   showNewLoanForm = true;
-  constructor(private fb: FormBuilder, private service: LoansService, private toastr: ToastrService, private title: Title) { 
+  constructor(private fb: FormBuilder, private service: LoansService, private toastr: ToastrService, private title: Title) {
     this.title.setTitle('Credit Alert - New Loan');
   }
 
@@ -33,8 +33,8 @@ export class ApplyNewLoanComponent implements OnInit {
 
   initNewLoanForm() {
     this.newloanForm = this.fb.group({
-      loan_amount: [null, [Validators.required]],
-      net_pay: [null, [Validators.required]],
+      loan_amount: [null, [Validators.required, this.confirmValidator]],
+      net_pay: [null, [Validators.required, this.confirmValidator]],
       place_of_work: [null, [Validators.required]],
       bank_code: [null, [Validators.required]],
       acc_no: [null, [Validators.required]],
@@ -49,8 +49,10 @@ export class ApplyNewLoanComponent implements OnInit {
     if (this.newloanForm.invalid) {
       return;
     }
-    const { bank_code } = formvalue;
+    const { bank_code, loan_amount, net_pay } = formvalue;
     formvalue.bank_code = bank_code.bankcode;
+    formvalue.loan_amount = this.unFormat(loan_amount).slice(1, loan_amount.length);
+    formvalue.net_pay = this.unFormat(net_pay).slice(1, net_pay.length);
     console.log(formvalue);
     this.isLoading = true;
     this.newloanForm.disable();
@@ -81,5 +83,90 @@ export class ApplyNewLoanComponent implements OnInit {
 
   resetLoanForm() {
     this.showNewLoanForm = true;
+  }
+
+  format(valString) {
+    if (!valString) {
+      return '';
+    }
+    const val = valString.toString();
+    const parts = this.unFormat(val).split('.');
+    return parts[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, ',') + (!parts[1] ? '' : '.' + parts[1]);
+  }
+
+
+  unFormat(val) {
+    if (!val) {
+      return '';
+    }
+    val = val.replace(/^0+/, '');
+    if (val.includes(',')) {
+      return val.replace(/,/g, '');
+    } else {
+      return val.replace(/\./g, '');
+    }
+  }
+
+
+  formatLoanAmountInput(e) {
+    const val = e.target.value;
+    const inputvalue = this.format(val);
+    // tslint:disable-next-line: max-line-length
+    let newValue: string;
+
+    if (inputvalue) {
+      if (inputvalue.length > 1) {
+        newValue = `₦${inputvalue.slice(1, inputvalue.length)}`
+      } else if (inputvalue.length === 1) {
+        if (inputvalue.includes('₦')) {
+          newValue = '';
+        } else {
+          newValue = `₦${inputvalue.slice(0, inputvalue.length)}`;
+        }
+      } else {
+        newValue = '';
+      }
+    } else {
+      newValue = '';
+    }
+    this.newloanForm.patchValue({ loan_amount: newValue });
+  }
+
+  formatNetPayAmountInput(e) {
+    const val = e.target.value;
+    const inputvalue = this.format(val);
+    let newValue: string;
+    if (inputvalue) {
+      if (inputvalue.length > 1) {
+        newValue = `₦${inputvalue.slice(1, inputvalue.length)}`;
+      } else if (inputvalue.length === 1) {
+        if (inputvalue.includes('₦')) {
+          newValue = '';
+        } else {
+          newValue = `₦${inputvalue.slice(0, inputvalue.length)}`;
+        }
+      } else {
+        newValue = '';
+      }
+    } else {
+      newValue = '';
+    }
+    this.newloanForm.patchValue({ net_pay: newValue });
+  }
+
+
+  confirmValidator = (control: FormControl): { [s: string]: boolean } => {
+    const val = this.unFormat(control.value);
+    const newValue = val.slice(1, val.length);
+    if (!control.value) {
+      return { error: true, required: true };
+    } else if (isNaN(newValue)) {
+      return { invalidAmount: true, error: true };
+    }
+    return {};
+  }
+
+  keyUp(e) {
+    // console.log(e)
   }
 }

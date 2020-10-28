@@ -39,24 +39,44 @@
                       </ng-container>
                       <div class="p-fluid">
                         <div class="p-field">
-                          <input type="number" class="p-inputtext-lg" pInputText placeholder="How much do you want?"
-                            formControlName="loan_amount">
+                          <input type="text" class="p-inputtext-lg" pInputText placeholder="How much do you want?"
+                            formControlName="loan_amount" (input)="formatLoanAmountInput($event)">
+                            <ng-container *ngIf="(formControls.loan_amount.dirty || formControls.loan_amount.touched) && formControls.loan_amount.errors">
+                              <span *ngIf="formControls.loan_amount.errors.required" id="loan_amount-help" class="p-invalid p-my-2 p-d-block">Loan amount is
+                                required!</span>
+                              <span *ngIf="formControls.loan_amount.errors.invalidAmount" id="loan_amount-help" class="p-invalid p-my-2 p-d-block">Loan amount is invalid</span>
+                            </ng-container>
                         </div>
                         <div class="p-field">
                           <input type="text" class="p-inputtext-lg" pInputText placeholder="Where do you work?"
                             formControlName="place_of_work">
+                            <ng-container *ngIf="(formControls.place_of_work.dirty || formControls.place_of_work.touched) && formControls.place_of_work.errors">
+                              <span *ngIf="formControls.place_of_work.errors.required" id="place_of_work-help" class="p-invalid p-my-2 p-d-block">Your place of work is required!</span>
+                            </ng-container>
                         </div>
                         <div class="p-field">
-                          <input type="number" class="p-inputtext-lg" pInputText placeholder="Net Pay (Monthly)"
-                            formControlName="net_pay">
+                          <input type="text" class="p-inputtext-lg" pInputText placeholder="Net Pay (Monthly)"
+                            formControlName="net_pay" (input)="formatNetPayAmountInput($event)">
+                            <ng-container *ngIf="(formControls.net_pay.dirty || formControls.net_pay.touched) && formControls.net_pay.errors">
+                              <span *ngIf="formControls.net_pay.errors.required" id="net_pay-help" class="p-invalid p-my-2 p-d-block">Your monthly net pay is
+                                required!</span>
+                              <span *ngIf="formControls.net_pay.errors.invalidAmount" id="net_pay-help" class="p-invalid p-my-2 p-d-block">Your monthly net pay is
+                                invalid!</span>
+                            </ng-container>
                         </div>
                         <div class="p-field">
                           <p-dropdown styleClass="bank-dropdown" formControlName="bank_code" [filter]="true"
                             [options]="banks" placeholder="Choose Bank" optionLabel="name"></p-dropdown>
+                            <ng-container *ngIf="(formControls.bank_code.dirty || formControls.bank_code.touched) && formControls.bank_code.errors">
+                              <span *ngIf="formControls.bank_code.errors.required" id="bank_code-help" class="p-invalid p-my-2 p-d-block">Select your bank name!</span>
+                            </ng-container>
                         </div>
                         <div class="p-field">
                           <input type="number" class="p-inputtext-lg" pInputText placeholder="Your Account Number"
                             formControlName="acc_no">
+                            <ng-container *ngIf="(formControls.acc_no.dirty || formControls.acc_no.touched) && formControls.acc_no.errors">
+                              <span *ngIf="formControls.acc_no.errors.required" id="acc_no-help" class="p-invalid p-my-2 p-d-block">Enter your account number!</span>
+                            </ng-container>
                         </div>
                       </div>
                       <div class="p-field">
