@@ -39,8 +39,10 @@
                       </ng-container>
                       <div class="p-fluid">
                         <div class="p-field">
-                          <input type="text" class="p-inputtext-lg" pInputText placeholder="How much do you want?"
-                            formControlName="loan_amount" (input)="formatLoanAmountInput($event)">
+                          <!-- <input type="text" class="p-inputtext-lg" pInputText placeholder="How much do you want?"
+                            formControlName="loan_amount" (input)="formatLoanAmountInput($event)"> -->
+                            <input type="text" class="p-inputtext-lg" pInputText placeholder="How much do you want?"
+                            formControlName="loan_amount" pKeyFilter="money" (input)="formatLoanAmountInput($event)">
                             <ng-container *ngIf="(formControls.loan_amount.dirty || formControls.loan_amount.touched) && formControls.loan_amount.errors">
                               <span *ngIf="formControls.loan_amount.errors.required" id="loan_amount-help" class="p-invalid p-my-2 p-d-block">Loan amount is
                                 required!</span>
@@ -55,8 +57,11 @@
                             </ng-container>
                         </div>
                         <div class="p-field">
-                          <input type="text" class="p-inputtext-lg" pInputText placeholder="Net Pay (Monthly)"
-                            formControlName="net_pay" (input)="formatNetPayAmountInput($event)">
+                          <!-- <input type="text" class="p-inputtext-lg" pInputText placeholder="Net Pay (Monthly)"
+                            formControlName="net_pay" (input)="formatNetPayAmountInput($event)"> -->
+                            <input type="text" class="p-inputtext-lg" pInputText placeholder="Net Pay (Monthly)"
+                            formControlName="net_pay" pKeyFilter="money" (input)="formatNetPayAmountInput($event)">
+
                             <ng-container *ngIf="(formControls.net_pay.dirty || formControls.net_pay.touched) && formControls.net_pay.errors">
                               <span *ngIf="formControls.net_pay.errors.required" id="net_pay-help" class="p-invalid p-my-2 p-d-block">Your monthly net pay is
                                 required!</span>

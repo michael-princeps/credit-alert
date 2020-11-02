@@ -9,6 +9,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   declarations: [CustomCurrencyPipe, SidenavComponent],
@@ -18,10 +19,11 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     SidebarModule,
     CalendarModule,
+    KeyFilterModule,
     DropdownModule,
-    RouterModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    RouterModule
   ],
   exports: [
     InputTextModule,
@@ -31,9 +33,10 @@ import { RouterModule } from '@angular/router';
     DropdownModule,
     CalendarModule,
     SidebarModule,
-    RouterModule,
+    KeyFilterModule,
     SidenavComponent,
     ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class SharedModule { }
